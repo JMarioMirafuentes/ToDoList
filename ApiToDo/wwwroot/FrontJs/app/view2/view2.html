@@ -1,0 +1,123 @@
+<button class="col-md-" ng-if="!isEditing" ng-click="startNewTask()">
+  Nuevo
+</button>
+<div ng-If="isVisible || isEditing" class="container">
+  <h1>Formulario de Tareas</h1>
+  <h3>{{ isEditing ? 'Editando Tarea' : 'Agregando Tarea' }}</h3>
+
+  <form name="tareaForm" novalidate>
+    <div class="form-group">
+      <label for="titulo">Título:</label>
+      <input
+        type="text"
+        id="titulo"
+        name="titulo"
+        ng-model="tarea.Titulo"
+        required
+      />
+      <span ng-show="tareaForm.titulo.$touched && tareaForm.titulo.$invalid"
+        >Título es requerido.</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        ng-model="tarea.Descripcion"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="fechaCreacion">Fecha de Creación:</label>
+      <input
+        type="date"
+        id="fechaCreacion"
+        name="fechaCreacion"
+        ng-model="tarea.FechaCreacion"
+        required
+      />
+      <span
+        ng-show="tareaForm.fechaCreacion.$touched && tareaForm.fechaCreacion.$invalid"
+        >Fecha de Creación es requerida.</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label>Estado:</label>
+      <input type="checkbox" ng-model="tarea.Estado" /> Completada
+    </div>
+    <div class="row" style="text-align: center">
+      <button
+        class="col-md-2"
+        style="align-self: center; margin-right: 1rem"
+        type="submit"
+        ng-click="submitForm(tareaForm)"
+      >
+        Enviar
+      </button>
+
+      <button
+        type="button"
+        class="col-md-2"
+        ng-if="isVisible"
+        ng-click="cancelEdit()"
+      >
+        Cancelar
+      </button>
+
+      <button
+        type="button"
+        class="col-md-3"
+        ng-if="isEditing"
+        ng-click="cancelEdit()"
+      >
+        Cancelar Edición
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Tabla -->
+<h2>Tareas Agregadas</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descripción</th>
+      <th>Fecha de Creación</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="t in tareas">
+      <td>{{ t.Titulo }}</td>
+      <td>{{ t.Descripcion }}</td>
+      <td>{{ t.FechaCreacion | date:'dd/MM/yyyy' }}</td>
+      <td>
+        <input
+          type="checkbox"
+          ng-model="t.Estado"
+          ng-change="updateEstado(t)"
+        />
+      </td>
+      <td>
+        <div class="row">
+          <div class="col-md-3">
+            <button class="btn-edit" ng-click="editTask(t)">
+              <i class="fas fa-edit"></i> Editar
+            </button>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-3">
+            <button class="btn-delete" ng-click="deleteTask(t)">
+              <i class="fas fa-trash-alt"></i> Eliminar
+            </button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

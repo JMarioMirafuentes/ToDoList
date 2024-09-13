@@ -1,0 +1,70 @@
+# Archivos y carpetas de build
+bin/
+obj/
+packages/
+*.log
+*.vs/
+
+# Archivos de configuración de usuario
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Archivos de configuración del sistema
+*.dll
+*.exe
+*.pdb
+*.idb
+*.ilk
+*.suo
+*.swp
+
+# Archivos generados por el entorno
+*.ncb
+*.sdf
+*.cache
+*.csproj.user
+*.dbmdl
+*.jfm
+*.suo
+*.psess
+*.vsp
+*.vspx
+*.vssscc
+*.vsscc
+
+# Directorios generados por Visual Studio
+.vs/
+.vscode/
+
+# Archivos de configuración del entorno
+*.env
+*.config
+
+# Archivos generados por herramientas de empaquetado
+*.nuget/
+*.nupkg
+
+# Archivos de configuración de instalación
+*.msi
+*.msp
+*.wixpdb
+
+# Directorios específicos de NuGet
+.nuget/
+packages/
+
+# Logs
+*.log
+
+# Cachés
+*.cache
+*.tmp
+
+# Otros archivos temporales
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo

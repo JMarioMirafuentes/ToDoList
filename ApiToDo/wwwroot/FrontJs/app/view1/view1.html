@@ -1,0 +1,50 @@
+<div class="container">
+  <h1>Formulario de Tareas</h1>
+
+  <form name="tareaForm" ng-submit="submitForm()" novalidate>
+    <div class="form-group">
+      <label for="titulo">Título:</label>
+      <input
+        type="text"
+        id="titulo"
+        name="titulo"
+        ng-model="tarea.Titulo"
+        required
+      />
+      <span ng-show="tareaForm.titulo.$touched && tareaForm.titulo.$invalid"
+        >Título es requerido.</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        ng-model="tarea.Descripcion"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="fechaCreacion">Fecha de Creación:</label>
+      <input
+        type="date"
+        id="fechaCreacion"
+        name="fechaCreacion"
+        ng-model="tarea.FechaCreacion"
+        required
+      />
+      <span
+        ng-show="tareaForm.fechaCreacion.$touched && tareaForm.fechaCreacion.$invalid"
+        >Fecha de Creación es requerida.</span
+      >
+    </div>
+
+    <div class="form-group">
+      <label>Estado:</label>
+      <input type="checkbox" ng-model="tarea.Estado" /> Completada
+    </div>
+
+    <button style="align-self: center" type="submit">Enviar</button>
+  </form>
+</div>
